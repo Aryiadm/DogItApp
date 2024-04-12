@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './Navbar';
+import Community from './Community';
+import Stores from './Stores';
+import Records from './Records';
+import Profile from './Profile';
+import Login from './Login';
+import Settings from './Settings';
+import Notifications from './Notifications';
+import Bot from './Bot';
+import Chatbot from './Chatbot';
+import SignUp from './SignUp';
+//import FileUpload from './'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div>
+        <Navbar />
+        <Routes>
+          {/* Use Route components to specify paths and corresponding components */}
+          <Route path="/" element={<Community />} />
+          <Route path="/stores" element={<Stores />} />
+          <Route path="/records" element={<Records />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/chatbot" element={<Chatbot />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
+      </div>
+      <Bot/>
+    </BrowserRouter>
+  
   );
-}
+};
 
 export default App;
+

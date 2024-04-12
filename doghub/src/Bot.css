@@ -1,0 +1,20 @@
+.bot-floater {
+    position: fixed;
+    bottom: 20px; /* Adjust this value to change the vertical distance from the bottom */
+    right: 20px; /* Adjust this value to change the horizontal distance from the right */
+    background-color: #E9B384; /* Example background color */
+    width: 100px;
+    height: 100px;
+    color: #fff; /* Text color */
+    border-radius: 100px 100px 0 100px;
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: transform 0.3s ease; /* Smooth transition on hover */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+  .bot-floater:hover {
+    transform: scale(1.1); /* Scale up on hover for a hover effect */
+  }

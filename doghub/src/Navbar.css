@@ -1,0 +1,116 @@
+.nav-bar {
+    
+  background-color: #7C9D96;
+  color: #fff;
+  padding: 10px 100px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 20px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+    
+}
+
+.nav-left {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+}
+
+.nav-right {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+}
+
+.nav-item {
+  margin-right: 10px;
+}
+
+.nav-item:last-child {
+  margin-right: 0;
+}
+
+.nav-link {
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 36px;
+}
+
+.nav-item:hover {
+  background-color: #555; /* Background color on hover */
+}
+
+/* ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+li {
+  display: inline;
+  margin-right: 10px;
+}
+
+li:last-child {
+  margin-right: 0;
+} */
+
+a {
+  float: left;
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 36px;
+
+}
+
+
+.topnav-right {
+  float: right;
+}  
+
+
+.nav-item {
+display: flex;
+padding: 10px;
+border-radius: 10px;
+transition: background-color 0.2s ease;
+}
+
+
+.nav-item:hover {
+    background-color: #66817b;
+    
+}
+
+.nav-item:hover a {
+    color: #F4F2DE; /* Change text color to white (#FFFFFF) when .nav-item is hovered */
+  }
+
+.dropdown {
+  position: absolute;
+  top: 100%; /* Position the dropdown below the nav item */
+  left: 0;
+  z-index: 1;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown ul li {
+  padding: 10px;
+}
+
+.dropdown ul li:hover {
+  background-color: #ddd;
+}

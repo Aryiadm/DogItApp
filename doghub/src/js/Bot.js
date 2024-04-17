@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
-import './Bot.css';
+import '../css/Bot.css';
 
 const Bot = () => {
   const navigate = useNavigate(); // Initialize useNavigate hook

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './Login.css';
+import { useNavigate } from "react-router-dom";
+import '../css/Login.css';
 import { useAuth } from './AuthContext';  // Import useAuth hook
-
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -9,6 +9,7 @@ const LoginScreen = () => {
   const [loginMessage, setLoginMessage] = useState('');
   const [isLogin, setIsLogin] = useState(true); 
   const { login } = useAuth(); 
+  const navigate = useNavigate()
 
   const [users, setUsers] = useState({
     'mawil0721@gmail.com': 'password123',
@@ -19,6 +20,8 @@ const LoginScreen = () => {
     if (users[email] && users[email] === password) {
       login(email);  // Call login function with the email
       setLoginMessage(`Welcome, ${email.split('@')[0]}!`);
+      navigate('/');
+
     } else {
       setLoginMessage('Invalid email or password.');
     }
@@ -42,7 +45,9 @@ const LoginScreen = () => {
   return (
     <div className="login-screen">
       <h1>{isLogin ? 'Log In' : 'Sign Up'}</h1>
-      <img src={process.env.PUBLIC_URL + '/login-icon.png'} alt="Login Icon" className="login-icon" />
+      <div className='login-image-background'>
+      <img src={`${process.env.PUBLIC_URL}/img/LoginIcon.svg`} alt="Login Icon" className="login-icon" />
+      </div>
       <form className="login-form" onSubmit={(e) => e.preventDefault()}>
         <input 
           type="email" 

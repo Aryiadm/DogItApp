@@ -50,7 +50,7 @@ import Community from './Community';
 import Stores from './Stores';
 import Records from './Records';
 import Profile from './Profile';
-import Settings from './Settings';
+import Meet from './Meet';
 import Notifications from './Notifications';
 import Bot from './Bot';
 import Chatbot from './Chatbot';
@@ -67,7 +67,7 @@ const App = () => {
             <Route path="/records" element={<Records />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/settings" element={<Settings />} />
+            <Route path="/meet" element={<Meet />} />
             <Route path="/notifications" element={<Notifications />} />
             <Route path="/chatbot" element={<Chatbot />} />
             <Route path="/signup" element={<SignUp />} />

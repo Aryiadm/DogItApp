@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import FileUpload from './FileUpload';
 import FileList from './FileList';
-import './Records.css';
+import '../css/Records.css';
 
 const Records = () => {
   const [uploadedFiles, setUploadedFiles] = useState([]);

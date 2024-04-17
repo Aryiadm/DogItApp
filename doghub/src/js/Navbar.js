@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Navbar.css';
+import '../css/Navbar.css';
 import { useAuth } from './AuthContext';  // Make sure useAuth is correctly imported
 
 const NavItem = ({ to, text, onClick }) => {
@@ -50,16 +50,21 @@ const Navbar = () => {
   return (
     <div className="nav-bar">
       <ul className="nav-left">
-        <NavItem to="/records" text="Records" />
+        <div className="app-logo-group">
+      <Link to="/" className="app-logo-link">
+          <img className="app-logo" src={`${process.env.PUBLIC_URL}/img/DogItLogo.svg`} alt="App Logo" />
+        </Link>
+        </div>
       </ul>
       <ul className="nav-right">
-        <NavItem to="/settings" text="Settings" />
+      <NavItem to="/records" text="Records" />
+        <NavItem to="/meet" text="Meet" />
         <NavItem to="/notifications" text="Notifications" />
         <NavItemWithDropdown 
           mainTo={user ? "/profile" : "/login"} 
           mainText={user ? user : "Login"}
           dropdownItems={user ? [
-            { to: "/settings", text: "Settings" },
+            { to: "/meet", text: "Meet" },
             { to: "#", text: "Logout", onClick: handleLogout }  
           ] : [
             { to: "/login", text: "Login" },

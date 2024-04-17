@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../css/Notifications.css';
 
 const Notifications = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -14,8 +15,8 @@ const Notifications = () => {
       <button onClick={toggleDropdown}>Notifications</button>
       {isDropdownOpen && (
         <div className="dropdown-content">
-          <a href="#">View Notifications</a>
-          <a href="#">Create Notification</a>
+          <div><a href="#">View Notifications</a></div>
+          <div><a href="#">Create Notification</a></div>
         </div>
       )}
     </div>

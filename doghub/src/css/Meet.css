@@ -1,0 +1,45 @@
+.settings-page {
+    font-family: Arial, sans-serif;
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    background: #f9f9f9; /* Just an example, choose your own color */
+  }
+  
+  .profile-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .profile {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    text-align: center; /* Center the text */
+  }
+  
+  .profile-image {
+    width: 80%;
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%; /* Circular image */
+    margin-bottom: 10px;
+    border: 3px solid #ddd; /* Border around the image */
+  }
+  
+  .profile-info {
+    text-align: center;
+  }
+  
+  h3 {
+    margin: 10px 0; /* Add space around the dog name */
+  }
+  
+  p {
+    color: #555; /* Slightly darker text for readability */
+  }
+  
+  /* Add any additional styles you might need */
+  

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css'; 
 
+
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,7 +14,9 @@ const LoginScreen = () => {
   return (
     <div className="login-screen">
       <h1>Log In</h1>
-      <img src={process.env.PUBLIC_URL + '/login-icon.png'} alt="Login Icon" className="login-icon" />
+      <div className='login-image-background'>
+      <img src={'./img/LoginIcon.svg'} alt="Login Icon" className="login-icon" />
+      </div>
       <form className="login-form">
         <input 
           type="email" 

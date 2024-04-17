@@ -1,20 +1,49 @@
 import React, { useState } from 'react';
-import './Login.css'; 
+import './Login.css';
+import { useAuth } from './AuthContext';  // Import useAuth hook
+
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loginMessage, setLoginMessage] = useState('');
+  const [isLogin, setIsLogin] = useState(true); 
+  const { login } = useAuth(); 
+
+  const [users, setUsers] = useState({
+    'mawil0721@gmail.com': 'password123',
+    'admin@site.com': 'admin2024'
+  });
 
   const handleLogin = () => {
-    // Handle the login logic here
-    console.log(email, password);
+    if (users[email] && users[email] === password) {
+      login(email);  // Call login function with the email
+      setLoginMessage(`Welcome, ${email.split('@')[0]}!`);
+    } else {
+      setLoginMessage('Invalid email or password.');
+    }
+  };
+
+  const handleSignUp = () => {
+    if (users[email]) {
+      setLoginMessage('Email already in use.');
+    } else {
+      setUsers(prev => ({ ...prev, [email]: password }));
+      setLoginMessage('Registration successful. Please log in.');
+      setIsLogin(true);  // Switch back to the login form after registration
+    }
+  };
+
+  const toggleForm = () => {
+    setIsLogin(!isLogin);
+    setLoginMessage('');
   };
 
   return (
     <div className="login-screen">
-      <h1>Log In</h1>
+      <h1>{isLogin ? 'Log In' : 'Sign Up'}</h1>
       <img src={process.env.PUBLIC_URL + '/login-icon.png'} alt="Login Icon" className="login-icon" />
-      <form className="login-form">
+      <form className="login-form" onSubmit={(e) => e.preventDefault()}>
         <input 
           type="email" 
           value={email} 
@@ -27,8 +56,20 @@ const LoginScreen = () => {
           onChange={(e) => setPassword(e.target.value)} 
           placeholder="Password" 
         />
-        <button type="button" onClick={handleLogin}>Log In</button>
-        <button type="button">Back</button>
+        {isLogin ? (
+          <>
+            <button type="button" onClick={handleLogin}>Log In</button>
+            
+            <button type="button" onClick={toggleForm}>Need an account? Sign up</button>
+            
+          </>
+        ) : (
+          <>
+            <button type="button" onClick={handleSignUp}>Sign Up</button>
+            <button type="button" onClick={toggleForm}>Have an account? Log in</button>
+          </>
+        )}
+        {loginMessage && <div className="login-message">{loginMessage}</div>}
       </form>
     </div>
   );

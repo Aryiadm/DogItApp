@@ -15,11 +15,108 @@
     align-items: center;
   }
 
+  .chatbox-welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .chatbox {
     width: 400px;
     height: 400px;
     background-color: #7C9D96;
     border-radius: 10px;
-    
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
   }
+
+  .welcome-avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .chatbox-avatar {
+    width: 30px;
+    height: 30px;
+  }
+
+  .user-image-background {
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    background-color: #D9D9D9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .user-avatar {
+    width: 20px;
+    height: 20px;
+  }
+
+
+  .chatbox-bar {
+    height: 50px;
+    border-bottom: 2px solid black; /* Setting a solid black bottom border of 2 pixels */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .chatbox-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+ /* Chat messages container */
+.chat-messages {
+  height: 280px; /* Set a maximum height for the chat messages container */
+  overflow-y: auto; /* Enable vertical scrolling when content exceeds container height */
+  padding: 10px; /* Optional padding for better visual appearance */
+  display: flex;
+  flex-direction: column; /* Stack messages vertically */
+}
+
+/* Individual message styling */
+.message {
+  margin-bottom: 10px; /* Add margin between messages */
+  padding: 8px;
+  border-radius: 8px;
+  max-width: 70%; /* Limit message width */
+}
+
+/* Style for user messages (align to the right) */
+.user-message {
+  align-self: flex-end; /* Align user messages to the right */
+  background-color: #DCF8C6; /* Example background color for user messages */
+}
+
+/* Style for bot messages (align to the left) */
+.bot-message {
+  align-self: flex-start; /* Align bot messages to the left */
+  background-color: #E0E0E0; /* Example background color for bot messages */
+}
+
+.hamburger-menu {
+  width: 20px;
+  height: 20px;
+}
+
+.user-message {
+  align-self: right;
+}
+
+.message-input {
+  align-self: end;
+  border-top: 2px solid black;
+}
   

@@ -1,0 +1,33 @@
+/* FileList.css */
+.file-list {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.file-entry {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.file-name {
+    flex-grow: 1;   
+}
+
+.view-button, .remove-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.view-button:hover, .remove-button:hover {
+    background-color: #0056b3;
+}
+  

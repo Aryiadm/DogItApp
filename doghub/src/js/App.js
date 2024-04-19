@@ -54,6 +54,8 @@ import Meet from './Meet';
 import Notifications from './Notifications';
 import Bot from './Bot';
 import Chatbot from './Chatbot';
+import ViewNotifications from './ViewNotifications';
+import CreateNotifications from './CreateNotifications';
 
 const App = () => {
   return (
@@ -71,6 +73,8 @@ const App = () => {
             <Route path="/notifications" element={<Notifications />} />
             <Route path="/chatbot" element={<Chatbot />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/viewNotifications" element={<ViewNotifications />} />
+            <Route path="/createNotifications" element={<CreateNotifications />} />
           </Routes>
         </div>
         <Bot/>

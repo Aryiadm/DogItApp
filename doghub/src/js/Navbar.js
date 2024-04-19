@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../css/Navbar.css';
 import { useAuth } from './AuthContext';  // Make sure useAuth is correctly imported
 
@@ -13,8 +13,38 @@ const NavItem = ({ to, text, onClick }) => {
 
   return (
     <li onClick={handleClick}>
+      <Link to={to} className="nav-link">
+        <div className="nav-item">
+          {text}
+        </div>
+      </Link>
+    </li>
+  );
+};
+
+const NotificationsDropdown = ({ onCreateNotification, onViewNotifications }) => {
+  const navigate = useNavigate(); // Import useNavigate hook
+
+  return (
+    <div className="dropdown-content">
+      <div><button onClick={() => navigate('/createNotifications')}>Create Notification</button></div>
+      <div><button onClick={() => navigate('/viewNotifications')}>View Notifications</button></div>
+    </div>
+  );
+};
+
+const NavItemWithNotificationsDropdown = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <li onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
       <div className="nav-item">
-        <Link to={to} className="nav-link">{text}</Link>
+        <div className="notification-logo-group">
+          <img className="notification-logo" src={`${process.env.PUBLIC_URL}/img/Bell_Two.png`} alt="Notification Logo" />
+          {isOpen && (
+            <NotificationsDropdown />
+          )}
+        </div>
       </div>
     </li>
   );
@@ -28,7 +58,7 @@ const NavItemWithDropdown = ({ mainTo, mainText, dropdownItems }) => {
       <div className="nav-item">
         <Link to={mainTo} className="nav-link">{mainText}</Link>
         {isOpen && (
-          <div className="dropdown" style={{ display: 'block' }}> 
+          <div className="dropdown"> 
             <ul>
               {dropdownItems.map((item, index) => (
                 <NavItem key={index} to={item.to} text={item.text} onClick={item.onClick} />
@@ -47,19 +77,46 @@ const Navbar = () => {
     event.preventDefault(); 
     logout();  
   };
+
+  // const handleCreateNotification = () => {
+  //   history.push('/createNotifications');
+  // };
+
+  // const handleViewNotifications = () => {
+  //   history.push('/viewNotifications');
+  // };
+
   return (
     <div className="nav-bar">
       <ul className="nav-left">
         <div className="app-logo-group">
-      <Link to="/" className="app-logo-link">
-          <img className="app-logo" src={`${process.env.PUBLIC_URL}/img/DogItLogo.svg`} alt="App Logo" />
-        </Link>
+          <Link to="/" className="app-logo-link">
+            <img className="app-logo" src={`${process.env.PUBLIC_URL}/img/DogItLogo.svg`} alt="App Logo" />
+          </Link>
         </div>
       </ul>
       <ul className="nav-right">
-      <NavItem to="/records" text="Records" />
+      {/* <div className="notification-logo-group">
+          <Link to="/notifications" className="notification-logo-link">
+            <img className="notification-logo" src={`${process.env.PUBLIC_URL}/img/Bell_Two.png`} alt="Notification Logo" />
+          </Link>
+        </div> */}
+        <NavItemWithNotificationsDropdown />
+        <NavItem to="/records" text="Records" />
         <NavItem to="/meet" text="Meet" />
-        <NavItem to="/notifications" text="Notifications" />
+        {/* <NavItem to="/notifications" text="Notifications" /> */}
+        
+        {/* <NavItemWithDropdown 
+          mainTo={user ? "/profile" : "/notifications"} 
+          mainText={user ? user : "Login"}
+          dropdownItems={user ? [
+            { to: "/meet", text: "Meet" },
+            { to: "#", text: "Logout", onClick: handleLogout }  
+          ] : [
+            { to: "/viewNotifications", text: "View Notifications" },
+            { to: "/createNotifications", text: "Create Notifications" }
+          ]}
+        /> */}
         <NavItemWithDropdown 
           mainTo={user ? "/profile" : "/login"} 
           mainText={user ? user : "Login"}

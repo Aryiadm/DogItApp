@@ -35,6 +35,26 @@
   background-color: #66817b;
 }
 
+.notification-logo {
+  width: auto;
+  height: 50px;
+}
+
+.notification-logo-link {
+  width: auto;
+  height: 50px;
+  margin: 5px;
+  
+}
+
+.notification-logo-group {
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.notification-logo-group:hover {
+  background-color: #66817b;
+}
 
 .nav-left {
   list-style-type: none;
@@ -101,23 +121,28 @@ a {
 
 .nav-item {
   position: relative;
-display: flex;
-padding: 10px;
-border-radius: 10px;
-transition: background-color 0.2s ease;
+  display: flex;
+  padding: 10px;
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+  transition: color 0.2s ease;
+  color: #000000;
 }
 
 
 .nav-item:hover {
     background-color: #66817b;
+    color: #F4F2DE;
     
 }
 
-.nav-item:hover a {
-    color: #F4F2DE; /* Change text color to white (#FFFFFF) when .nav-item is hovered */
-  }
+.nav-item:hover .nav-link{
+  color: #F4F2DE;
+  
+}
 
 .dropdown {
+  display: block;
   position: absolute;
   top: 100%; /* Position the dropdown below the nav item */
   left: 0;
@@ -125,6 +150,7 @@ transition: background-color 0.2s ease;
   background-color: #f9f9f9;
   border-radius: 5px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding:10px;
 }
 
 .dropdown ul {
@@ -138,5 +164,7 @@ transition: background-color 0.2s ease;
 }
 
 .dropdown ul li:hover {
-  background-color: #ddd;
+  /* background-color: #ddd; */
+  background-color: #f9f9f9;
+  border-radius: 5px;
 }

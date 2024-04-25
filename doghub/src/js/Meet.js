@@ -32,7 +32,7 @@ const initialDogOwnerProfiles = [
   },
   {
     dogName: "Oreo",
-    ownerName: "Salvador Alvedor",
+    ownerName: "Salvador Avelar",
     bio: "Oreo likes eating human oreos.",
     imageUrl: `${process.env.PUBLIC_URL}/img/DogFive.png`,
     ownerContact: "salvador@example.com",

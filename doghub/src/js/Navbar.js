@@ -26,9 +26,11 @@ const NotificationsDropdown = ({ onCreateNotification, onViewNotifications }) =>
   const navigate = useNavigate(); // Import useNavigate hook
 
   return (
-    <div className="dropdown-content">
-      <div><button onClick={() => navigate('/createNotifications')}>Create Notification</button></div>
-      <div><button onClick={() => navigate('/viewNotifications')}>View Notifications</button></div>
+    <div className="dropdown"> 
+      <ul className="dropdown-menu">
+        <li onClick={() => navigate('/createNotifications')}>Create Notification</li>
+        <li onClick={() => navigate('/viewNotifications')}>View Notifications</li>
+      </ul>
     </div>
   );
 };
@@ -41,14 +43,17 @@ const NavItemWithNotificationsDropdown = () => {
       <div className="nav-item">
         <div className="notification-logo-group">
           <img className="notification-logo" src={`${process.env.PUBLIC_URL}/img/Bell_Two.png`} alt="Notification Logo" />
-          {isOpen && (
-            <NotificationsDropdown />
-          )}
         </div>
+        {isOpen && (
+          <NotificationsDropdown />
+        )}
       </div>
     </li>
   );
 };
+
+
+
 
 const NavItemWithDropdown = ({ mainTo, mainText, dropdownItems }) => {
   const [isOpen, setIsOpen] = useState(false);

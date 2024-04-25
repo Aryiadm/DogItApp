@@ -28,13 +28,7 @@ const LoginScreen = () => {
   };
 
   const handleSignUp = () => {
-    if (users[email]) {
-      setLoginMessage('Email already in use.');
-    } else {
-      setUsers(prev => ({ ...prev, [email]: password }));
-      setLoginMessage('Registration successful. Please log in.');
-      setIsLogin(true);  // Switch back to the login form after registration
-    }
+    navigate('/signup');
   };
 
   const toggleForm = () => {
@@ -65,7 +59,7 @@ const LoginScreen = () => {
           <>
             <button type="button" onClick={handleLogin}>Log In</button>
             
-            <button type="button" onClick={toggleForm}>Need an account? Sign up</button>
+            <button type="button" onClick={handleSignUp}>Need an account? Sign up</button>
             
           </>
         ) : (

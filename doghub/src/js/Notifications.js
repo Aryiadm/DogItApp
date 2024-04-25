@@ -14,7 +14,7 @@ const Notifications = () => {
     <div className="notifications-container">
       <button onClick={toggleDropdown}>Notifications</button>
       {isDropdownOpen && (
-        <div className="dropdown-content">
+        <div className="dropdown">
           <div><a href="#">View Notifications</a></div>
           <div><a href="#">Create Notification</a></div>
         </div>

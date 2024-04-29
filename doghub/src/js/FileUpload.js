@@ -1,25 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
+import '../css/FileUpload.css'; // Your custom CSS file for styling
 
 const FileUpload = ({ onFileUpload }) => {
-    const [selectedFile, setSelectedFile] = useState(null);
-  
-    const handleFileChange = (event) => {
-      setSelectedFile(event.target.files[0]);
-    };
-  
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      if (selectedFile) {
-        onFileUpload(selectedFile);
-      }
-    };
-  
-    return (
-      <form onSubmit={handleSubmit}>
-        <input type="file" onChange={handleFileChange} />
-        <button type="submit">Upload</button>
-      </form>
-    );
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      onFileUpload(file); // Call the onFileUpload function as soon as the file is selected
+    }
   };
 
+  return (
+    <div className="file-upload-form">
+      <input type="file" id="file-upload" onChange={handleFileChange} hidden />
+      <label htmlFor="file-upload" className="custom-file-upload">Choose File</label>
+    </div>
+  );
+};
+
 export default FileUpload;
+

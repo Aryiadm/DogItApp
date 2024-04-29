@@ -1,0 +1,25 @@
+.file-upload-form {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adjust gap between elements */
+}
+
+.custom-file-upload, .upload-button {
+    background-color: #4a90e2; /* Your primary button color */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.custom-file-upload:hover, .upload-button:hover {
+    background-color: #357abd; /* A slightly darker shade for hover effect */
+}
+
+/* Optional: Styles for focus state */
+.custom-file-upload:focus, .upload-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.5); /* Glowing effect */
+}

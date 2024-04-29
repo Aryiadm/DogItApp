@@ -35,8 +35,9 @@ const Records = () => {
     <div>
       <div className="record-container">
         <div className="record-list">
-          <FileUpload onFileUpload={handleFileUpload} />
           <h2>Uploaded Medical Records</h2>
+          <FileUpload onFileUpload={handleFileUpload} />
+          
           <FileList 
             files={uploadedFiles} 
             onFileRemove={handleFileRemove} 

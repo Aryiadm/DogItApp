@@ -5,6 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## To Run this App
 
+### `cd doghub`
 In the project directory, run
 
 ### `npm install`

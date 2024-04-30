@@ -24,7 +24,7 @@ const ViewNotifications = () => {
   return (
     <div className="notifications-container">
       <div className="notifications-list">
-        <h2>Current Notifications</h2>
+      <h2 style={{ textAlign: 'center', width: '100%' }}>Current Notifications</h2>
         {notifications.map((notification, index) => (
           
           <div key={index} className="notification-item">

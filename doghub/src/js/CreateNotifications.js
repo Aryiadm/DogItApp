@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import '../css/Notifications.css';
+import { addNotification } from './NotificationList'; // Import addNotification from NotificationList.js
 
 const CreateNotifications = () => {
-  const [showTextbox, setShowTextbox] = useState(false);
   const [notificationName, setNotificationName] = useState('');
   const [message, setMessage] = useState('');
   const [eventTime, setEventTime] = useState('');
@@ -9,21 +10,11 @@ const CreateNotifications = () => {
   const [repeat, setRepeat] = useState('');
   const [notificationCopy, setNotificationCopy] = useState('');
 
-  const handleCreateNotification = () => {
-    setShowTextbox(true);
-  };
-
   const handleCancel = () => {
-    setShowTextbox(false);
-    setNotificationName('');
-    setMessage('');
-    setEventTime('');
-    setNotificationReceived('');
-    setRepeat('');
+    resetState();
   };
 
   const handleSave = () => {
-    // Here you can implement the logic to save the notification
     const notificationData = {
       notificationName,
       message,
@@ -31,9 +22,12 @@ const CreateNotifications = () => {
       notificationReceived,
       repeat
     };
-    console.log(notificationData); // For testing, you can replace this with actual logic
-    setNotificationCopy(JSON.stringify(notificationData, null, 2)); // Convert data to string for display
-    setShowTextbox(false);
+    setNotificationCopy(notificationData); // Setting notification copy with data
+    addNotification(notificationData); // Adding notification
+    resetState();
+  };
+
+  const resetState = () => {
     setNotificationName('');
     setMessage('');
     setEventTime('');
@@ -42,15 +36,16 @@ const CreateNotifications = () => {
   };
 
   return (
-    <div>
-      {showTextbox ? (
-        <div>
+    <div className="container">
+      <div className="notifications-container">
+        <div className="notifications-box">
           <label>
             Notification Name:
             <input
               type="text"
               value={notificationName}
               onChange={(e) => setNotificationName(e.target.value)}
+              className="input-field"
             />
           </label>
           <br />
@@ -60,6 +55,7 @@ const CreateNotifications = () => {
               type="text"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
+              className="input-field"
             />
           </label>
           <br />
@@ -69,6 +65,7 @@ const CreateNotifications = () => {
               type="datetime-local"
               value={eventTime}
               onChange={(e) => setEventTime(e.target.value)}
+              className="input-field"
             />
           </label>
           <br />
@@ -78,30 +75,44 @@ const CreateNotifications = () => {
               type="number"
               value={notificationReceived}
               onChange={(e) => setNotificationReceived(e.target.value)}
+              className="input-field"
             />
           </label>
           <br />
           <label>
-            Repeat (in days):
-            <input
-              type="number"
+            Repeat:
+            <select
               value={repeat}
               onChange={(e) => setRepeat(e.target.value)}
-            />
+              className="dropdown-content"
+            >
+              <option value="">Select</option>
+              <option value="never">Never</option>
+              <option value="once">Once</option>
+              <option value="everyday">Every Day</option>
+              <option value="everyweek">Every Week</option>
+              <option value="everymonth">Every Month</option>
+              <option value="everyyear">Every Year</option>
+            </select>
           </label>
-          <br />
-          <button onClick={handleCancel}>Cancel</button>
-          <button onClick={handleSave}>Save</button>
+          <div className="button-container">
+            <button onClick={handleCancel} className="cancel-button">Cancel</button>
+            <button onClick={handleSave} className="save-button">Save</button>
+          </div>
         </div>
-      ) : (
-        <button onClick={handleCreateNotification}>Create Notification</button>
-      )}
-      {notificationCopy && (
-        <div style={{ border: '1px solid black', padding: '10px', marginTop: '20px' }}>
-          <h2>New Notification:</h2>
-          <pre>{notificationCopy}</pre>
-        </div>
-      )}
+      </div>
+      <div className="notification-copy-container">
+        {notificationCopy && (
+          <div className="notifications-box">
+            <h2>New Notification:</h2>
+            <p><strong>Notification Name:</strong> {notificationCopy.notificationName}</p>
+            <p><strong>Message:</strong> {notificationCopy.message}</p>
+            <p><strong>Event Time:</strong> {notificationCopy.eventTime}</p>
+            {/* <p><strong>Notification Received:</strong> {notificationCopy.notificationReceived}</p> */}
+            <p><strong>Repeat:</strong> {notificationCopy.repeat}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

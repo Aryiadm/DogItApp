@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import FileUpload from './FileUpload';
 import FileList from './FileList';
@@ -10,11 +9,11 @@ const Records = () => {
 
   const handleFileUpload = (file) => {
     const fileReader = new FileReader();
-    fileReader.readAsDataURL(file); // Converts the file to a data URL
+    fileReader.readAsDataURL(file); 
     fileReader.onload = (event) => {
       const url = event.target.result;
       setUploadedFiles([...uploadedFiles, { file, url, name: file.name }]);
-      setPreviewUrl(url); // Automatically preview uploaded file
+      setPreviewUrl(url); 
     };
   };
 
@@ -23,19 +22,19 @@ const Records = () => {
     newFiles.splice(index, 1);
     setUploadedFiles(newFiles);
     if (uploadedFiles[index].url === previewUrl) {
-      setPreviewUrl(''); // Clear the preview if the currently previewed file is removed
+      setPreviewUrl(''); 
     }
   };
 
   const handleSelectFile = (url) => {
-    setPreviewUrl(url); // Set the URL for preview when a file is selected
+    setPreviewUrl(url);
   };
 
   return (
     <div>
       <div className="record-container">
         <div className="record-list">
-          <h2>Uploaded Medical Records</h2>
+          <h1>Medical Records</h1>
           <FileUpload onFileUpload={handleFileUpload} />
           
           <FileList 
@@ -45,13 +44,19 @@ const Records = () => {
           />
         </div>
         <div className="record-display">
-          {previewUrl && (
+          {previewUrl ? (
             <iframe 
               src={previewUrl} 
-              style={{ width: '100%', height: '800px' }} 
+              style={{ width: '100%', height: '700px' }} 
               frameBorder="0" 
               allowFullScreen
             ></iframe>
+          ) : (
+            <img 
+              src={`${process.env.PUBLIC_URL}/img/File.svg`}
+              alt="File Icon" 
+              style={{ maxWidth: '100%', maxHeight: '100%'}} 
+            />
           )}
         </div>
       </div>
@@ -60,4 +65,5 @@ const Records = () => {
 };
 
 export default Records;
+
 

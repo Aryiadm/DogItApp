@@ -76,9 +76,9 @@ const Meet = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Add a new profile to the profiles array
+  
     setProfiles(profiles.concat(newProfile));
-    // Reset the form fields
+
     setNewProfile({
       dogName: '',
       ownerName: '',
@@ -121,13 +121,14 @@ const Meet = () => {
           onChange={handleImageChange}
           required
         />
-        <input
+        <input className="owner-contact"
           type="email"
           name="ownerContact"
           value={newProfile.ownerContact}
           onChange={handleInputChange}
           placeholder="Owner's Contact"
           required
+          // style="font-size: 20px;"
         />
         <button type="submit">Add Profile</button>
       </form>

@@ -1,16 +1,23 @@
-/* FileList.css */
 .file-list {
     margin: 0;
     padding: 0;
     width: 100%;
 }
 
+.file-name-container {
+    border-radius: 5px;
+    background-color: #F4F2DE; 
+    padding: 5px 10px;
+    margin-right: 10px; 
+    width: 100%;
+  }
+
+  
 .file-entry {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    border-bottom: 1px solid #ccc;
 }
 
 .file-name {

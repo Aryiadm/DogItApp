@@ -6,7 +6,9 @@ const FileList = ({ files, onFileRemove, onFileSelect }) => {
     <div className="file-list">
       {files.map((file, index) => (
         <div key={index} className="file-entry">
-          <span className="file-name">{file.name}</span>
+          <div className="file-name-container">
+            <span className="file-name">{file.name}</span>
+          </div>
           <button 
             className="view-button" 
             onClick={() => onFileSelect(file.url)}
@@ -26,4 +28,3 @@ const FileList = ({ files, onFileRemove, onFileSelect }) => {
 };
 
 export default FileList;
-

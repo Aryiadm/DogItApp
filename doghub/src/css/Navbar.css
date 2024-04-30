@@ -1,17 +1,29 @@
 .nav-bar {
-    
   background-color: #7C9D96;
   color: #fff;
   padding: 10px 50px;
-  margin-left: 100px;
-  margin-right: 100px;
-  margin-top: 20px;
+  margin: 20px auto; 
   border-radius: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* position: absolute; */
-    
+  max-width: 75%;
+}
+
+@media (max-width: 75%) {
+  .nav-bar {
+    padding: 10px 20px; 
+    flex-direction: column;
+    gap: 10px; 
+  }
+
+  .nav-item, .nav-link {
+    font-size: 20px; 
+  }
+
+  .app-logo, .notification-logo {
+    height: 40px; 
+  }
 }
 
 .app-logo {
@@ -36,20 +48,13 @@
 }
 
 .notification-logo {
-  width: auto;
-  height: 50px;
+  width: fit-content;
+  height: 40px;
 }
 
 .notification-logo-link {
   width: auto;
-  height: 50px;
-  margin: 5px;
-  
-}
-
-.notification-logo-group {
-  border-radius: 10px;
-  transition: background-color 0.2s ease;
+  height: 40px;
 }
 
 .notification-logo-group:hover {
@@ -85,24 +90,28 @@
 }
 
 .nav-item:hover {
-  background-color: #555; /* Background color on hover */
+  background-color: #555; 
 }
 
-/* ul {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  justify-content: space-evenly;
-}
+@media (max-width: 500px) {
+  .nav-bar {
+    background-color: #7C9D96;
+    color: #fff;
+    padding: 10px 50px;
+    margin: 20px auto; 
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 75%;
+   
+  }
 
-li {
-  display: inline;
-  margin-right: 10px;
-}
+  .nav-item, .nav-link {
+    font-size: 20px; 
+  }
 
-li:last-child {
-  margin-right: 0;
-} */
+}
 
 a {
   float: left;
@@ -144,7 +153,7 @@ a {
 .dropdown {
   display: block;
   position: absolute;
-  top: 100%; /* Position the dropdown below the nav item */
+  top: 100%; 
   left: 0;
   z-index: 1;
   background-color: #f9f9f9;
@@ -160,11 +169,40 @@ a {
 }
 
 .dropdown ul li {
-  padding: 10px;
+  padding: 5px;
 }
 
 .dropdown ul li:hover {
-  /* background-color: #ddd; */
+
   background-color: #f9f9f9;
   border-radius: 5px;
 }
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+
+.dropdown-menu li {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  color: #333;
+}
+
+
+.dropdown-menu li:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+
+.dropdown-menu {
+  display: block;
+}
+

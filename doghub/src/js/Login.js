@@ -18,7 +18,7 @@ const LoginScreen = () => {
 
   const handleLogin = () => {
     if (users[email] && users[email] === password) {
-      login(email);  // Call login function with the email
+      login(email);  
       setLoginMessage(`Welcome, ${email.split('@')[0]}!`);
       navigate('/');
 

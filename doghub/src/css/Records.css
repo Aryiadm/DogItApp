@@ -14,22 +14,29 @@
 
 .record-display {
     flex-grow: 2;
-    height: 800px;
+    height: 700px;
     background-color: #D9D9D9;
     border-radius: 10px;
     margin-top: 50px;
     margin-right: 100px;
     margin-left: 100px;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.record-list h2 {
+.record-list h1 {
     text-align: center;
     width: 100%;
+    font-size: 36px;
   }
   
 
 .file-upload-form {
-    width: 100%; /* Take full width to center children properly */
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 24px;
+    font-weight: bold;
 }

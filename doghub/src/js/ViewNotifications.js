@@ -1,25 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import '../css/ViewNotifications.css';
+import { getNotificationsFromStorage, saveNotificationsToStorage } from './NotificationList'; 
 
 const ViewNotifications = () => {
-  // Assuming notifications is an array of notification strings
-  const notifications = ["Notification 1", "Notification 2", "Notification 3"];
+  const [notifications, setNotifications] = useState([]);
+  const [notification, setNotification] = useState(null); 
+  useEffect(() => {
+    const storedNotifications = getNotificationsFromStorage();
+    setNotifications(storedNotifications);
+  }, []);
+
+  const removeNotification = (id) => {
+    const updatedNotifications = notifications.filter(notification => notification.id !== id);
+    setNotifications(updatedNotifications);
+    saveNotificationsToStorage(updatedNotifications);
+    setNotification(null); 
+  };
+
+  const displayNotification = (notification) => {
+    setNotification(notification);
+  };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <div style={{ width: '35%', backgroundColor: '#A1CCD1', padding: '20px', position: 'relative' }}>
-        <h2 style={{ color: '#000', marginBottom: '10px' }}>Current Notifications</h2>
+    <div className="notifications-container">
+      <div className="notifications-list">
+        <h2>Current Notifications</h2>
         {notifications.map((notification, index) => (
-          <div key={index} style={{ backgroundColor: '#F4F2DE', padding: '10px', marginBottom: '10px' }}>
-            <p>{notification}</p>
+          
+          <div key={index} className="notification-item">
+            <div className="notification-name-container">
+            <span className="notification-name">{notification.notificationName}</span>
+            </div>
+            <div className='notification-buttons'>
+              <button className="remove-button" onClick={() => removeNotification(notification.id)}>Mark as Read</button>
+              <button className="display-button" onClick={() => displayNotification(notification)}>View</button>
+              </div>
           </div>
         ))}
-        <div style={{ backgroundColor: '#F4F2DE', padding: '10px', marginTop: '20px', position: 'absolute', bottom: '20px', left: '50%', transform: 'translateX(-50%)' }}>
-          <button style={{ backgroundColor: '#F4F2DE', color: '#000', padding: '10px 20px' }}>Back</button>
-        </div>
       </div>
-      <div style={{ width: '65%', padding: '20px' }}>
-        <h1>View Notifications</h1>
-        {/* Add your content for the right side here */}
+      <div className="notification-display">
+        {notification && (
+          <div className="notification-copy-container">
+          {notification && (
+            <div className="notifications-box">
+              <p><strong>Notification Name:</strong> {notification.notificationName}</p>
+              <p><strong>Message:</strong> {notification.message}</p>
+              <p><strong>Event Time:</strong> {notification.eventTime}</p>
+              {/* <p><strong>Notification Received:</strong> {notificationCopy.notificationReceived}</p> */}
+              <p><strong>Repeat:</strong> {notification.repeat}</p>
+            </div>
+          )}
+        </div>
+        )}
       </div>
     </div>
   );

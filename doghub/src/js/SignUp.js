@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import '../css/Signup.css';
-import { useAuth } from './AuthContext';  // Import useAuth hook
+import { useAuth } from './AuthContext';  
 
 const SignupScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [signupMessage, setSignupMessage] = useState('');
+  const [name, setName] = useState('');
   const [users, setUsers] = useState({
     'mawil0721@gmail.com': 'password123',
     'admin@site.com': 'admin2024'
@@ -16,7 +17,6 @@ const SignupScreen = () => {
   const navigate = useNavigate();
 
   const handleSignUp = () => {
-    // Regular expression for email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
     if (!emailRegex.test(email)) {
@@ -30,7 +30,7 @@ const SignupScreen = () => {
     } else {
       setUsers(prev => ({ ...prev, [email]: password }));
       setSignupMessage('Registration successful. Please log in.');
-      login(email);  // Call login function with the email
+      login(name);  
       navigate('/');
     }
   };
@@ -47,6 +47,12 @@ const SignupScreen = () => {
         <img src={`${process.env.PUBLIC_URL}/img/LoginIcon.svg`} alt="Signup Icon" className="signup-icon" />
       </div>
       <form className="signup-form" onSubmit={(e) => e.preventDefault()}>
+      <input 
+          type="text" 
+          value={name} 
+          onChange={(e) => setName(e.target.value)} 
+          placeholder="Name" 
+        />
         <input 
           type="email" 
           value={email} 

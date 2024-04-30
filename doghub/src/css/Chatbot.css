@@ -1,7 +1,6 @@
 .chatbot-container {
   display: flex;
   justify-content: center;
-
 }
 
 .chatbot-window {
@@ -108,75 +107,107 @@
 }
 
 .message {
-  margin-bottom: 10px; /* Add margin between messages */
+  margin-bottom: 10px; 
   padding: 8px;
   border-radius: 8px;
-  max-width: 70%; /* Limit message width */
-  word-wrap: break-word; /* Allow text to wrap within the message */
+  max-width: 70%; 
+  word-wrap: break-word; 
 }
 
 .message-bubble {
-  background-color: #0165e7; /* Example background color for user messages */
-  align-self: flex-end; /* Align user messages to the right */
-  border-top-left-radius: 10px; /* Rounded top left corner */
-  border-bottom-left-radius: 10px; /* Rounded bottom left corner */
-  border-top-right-radius: 10px; /* Rounded top right corner */
-  border-bottom-right-radius: 0; /* Straight bottom right corner */
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  align-self: flex-end;
+  border-top-left-radius: 15px; 
+  border-bottom-left-radius: 15px; 
+  border-top-right-radius: 15px; 
+  border-bottom-right-radius: 0; 
+  margin-bottom: 2px;
 }
 
-/* Style for user messages (align to the right) */
-.user-message {
-
+.user-bubble {
+  align-self: flex-end;
+  background-color: beige; 
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px; 
+  border-top-right-radius: 15px; 
+  border-bottom-right-radius: 0; 
 }
 
-/* Style for bot messages (align to the left) */
+p {
+  color: black;
+}
+
+.bot-bubble {
+  align-self: flex-start;
+  color: black;
+  background-color: #E0E0E0; 
+  border-top-left-radius: 15px; 
+  border-bottom-left-radius: 0px; 
+  border-top-right-radius: 15px; 
+  border-bottom-right-radius: 15px; 
+}
+
+
 .bot-message {
-  align-self: flex-start; /* Align bot messages to the left */
-  background-color: #E0E0E0; /* Example background color for bot messages */
-  border-top-left-radius: 10px; /* Rounded top left corner */
-  border-bottom-left-radius: 0; /* Straight bottom left corner */
-  border-top-right-radius: 10px; /* Rounded top right corner */
-  border-bottom-right-radius: 10px; /* Rounded bottom right corner */
+  align-self: flex-start; 
+  border-top-left-radius: 10px; 
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 10px; 
+  border-bottom-right-radius: 10px; 
 }
 
 .hamburger-menu {
   width: 20px;
   height: 20px;
 }
-
+  
 .user-message {
-  align-self: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; 
+  align-self: flex-end;
 }
 
-  
+.user-timestamp {
+  align-self: flex-end; 
+  display: block;
+}
+
 .message-input {
-  display: flex; /* Use flexbox layout */
-  width: 100%; /* Occupy 100% width of the parent container */
-  border-top: 2px solid black; /* Add a top border with thickness */
+  display: flex; 
+  width: 100%; 
+  border-top: 2px solid black; 
 }
 
 .message-input input {
-  flex: 1; /* Allow the input element to grow and fill available space */
-  padding: 8px; /* Add padding inside the input */
-  border: none; /* Remove default input border */
-  border-radius: 4px; /* Apply border radius to input */
-  outline: none; /* Remove input focus outline */
-  margin: 5px;
+  flex: 1; 
+  padding: 8px; 
+  border: none; 
+  border-radius: 4px; 
+  outline: none;
+  padding-left: 10px;
   background-color: #E0E0E0;
 }
 
 .message-input button {
-  padding: 8px 16px; /* Add padding to the button */
-  margin-left: 8px; /* Add spacing between input and button */
-  border: none; /* Remove default button border */
-  border-radius: 4px; /* Apply border radius to button */
-  background-color: #F4F2DE; /* Example button background color */
-  color: black; /* Text color */
-  cursor: pointer; /* Show pointer cursor on hover */
-  outline: none; /* Remove button focus outline */
+  padding: 8px 16px; 
+  margin-left: 8px;
+  border: none; 
+  border-radius: 4px;
+  background-color: #F4F2DE; 
+  color: black; 
+  cursor: pointer; 
+  outline: none; 
+}
+
+.hidden {
+  display: none;
 }
 
 .message-input button:hover {
-  background-color: #E9B384; /* Change background color on hover */
+  background-color: #E9B384; 
   color: black;
 }

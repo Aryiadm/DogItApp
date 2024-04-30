@@ -8,24 +8,33 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
 
+  function formatTime(timeString) {
+    const [time, period] = timeString.split(' ');
+
+    const [hours, minutes] = time.split(':');
+
+    const formattedTime = `${hours}:${minutes}${period}`;
+
+    return formattedTime;
+}
+
   const handleSendMessage = async () => {
     if (inputValue.trim() === '') {
-      return; // Do not send empty messages
+      return; 
     }
     const userInput = inputValue;
-    setInputValue(''); // Clear the input value
+    setInputValue(''); 
 
     const newMessage = {
       text: inputValue,
-      sender: 'user', // Set sender as 'user' for the message being sent
-      timestamp: new Date().toLocaleTimeString(),
+      sender: 'user', 
+      timestamp: formatTime(new Date().toLocaleTimeString()),
     };
     const formattedMessages = messages.map(msg => {
       const speaker = msg.sender === 'bot' ? 'Bot' : 'User';
       return `${speaker}: ${msg.text}`;
     }).join('\n');
 
-    // Add user's message to the chat
     setMessages(prevMessages => [...prevMessages, newMessage]);
 
     try {
@@ -38,25 +47,25 @@ const Chatbot = () => {
             Authorization: 'Bearer rg_v1_o46doxj5m2j9ymgu1748w01khg99jwnloyz2_ngk',
           },
           body: JSON.stringify({
-            // fill variables here.
+
             "currentInput": userInput,
             "chathistory": formattedMessages,
           }),
         }
       ).then(response => response.text());
 
-      setInputValue(''); // Clear the input value
+      setInputValue(''); 
       const botMessage = {
         text: response,
-        sender: 'bot', // Set sender as 'bot' for the bot's response
-        timestamp: new Date().toLocaleTimeString(),
+        sender: 'bot', 
+        timestamp: formatTime(new Date().toLocaleTimeString()),
       };
 
-      // Add bot's response to the chat
+      
       setMessages(prevMessages => [...prevMessages, botMessage]);
     } catch (error) {
       console.error('Error fetching response:', error);
-      // Handle error if needed
+
     }
   };
 
@@ -89,10 +98,10 @@ const Chatbot = () => {
               <div className='user-image-background'>
                 <img src={`${process.env.PUBLIC_URL}/img/LoginIcon.svg`} alt="User Avatar" className="user-avatar" />
               </div>
-              <img src={`${process.env.PUBLIC_URL}/img/HamburgerMenu.svg`} alt="Hamburger Menu" className="hamburger-menu" />
+              {}
             </div>
           </div>
-          {/* Displaying chat messages */}
+          {}
           <div className="chat-messages">
             {messages.map((message, index) => (
               <Message
@@ -103,7 +112,7 @@ const Chatbot = () => {
               />
             ))}
           </div>
-          {/* Input area to send messages */}
+          {}
           <div className="message-input">
             <input
               type="text"

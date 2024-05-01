@@ -23,6 +23,7 @@ const ViewNotifications = () => {
 
   return (
     <div className="notifications-container">
+
       <div className="notifications-list" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         <h2 style={{ textAlign: 'center' }}>Current Notifications</h2>
         {notifications.map((notification, index) => (

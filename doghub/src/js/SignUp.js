@@ -16,25 +16,44 @@ const SignupScreen = () => {
   const { login } = useAuth(); 
   const navigate = useNavigate();
 
-  const handleSignUp = () => {
+
+  const hashPassword = async (password) => {
+    // First, encode the password as UTF-8
+    const msgBuffer = new TextEncoder().encode(password); 
+
+    // Hash the password
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+
+    // Convert the ArrayBuffer to string using hexadecimal representation
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+    return hashHex;
+  };
+
+  const handleSignUp = async () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
     if (!emailRegex.test(email)) {
       setSignupMessage('Please enter a valid email address.');
     } else if (!password.trim()) {
       setSignupMessage('Please enter a password.');
-    } else if (users[email]) {
-      setSignupMessage('Email already in use.');
     } else if (password !== confirmPassword) {
       setSignupMessage('Passwords do not match.');
     } else {
-      setUsers(prev => ({ ...prev, [email]: password }));
-      setSignupMessage('Registration successful. Please log in.');
-      login(name);  
-      navigate('/');
+  
+      try {
+        const hashedPassword = await hashPassword(password);
+        localStorage.setItem(email, hashedPassword);
+        setSignupMessage('Registration successful. Please log in.');
+        login(name);  
+        navigate('/');
+      } catch (error) {
+        console.error('Password hashing failed:', error);
+
+      }
     }
   };
-  
 
   const handleBackToLogin = () => {
     navigate('/login');
